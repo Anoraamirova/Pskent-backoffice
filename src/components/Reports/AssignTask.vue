@@ -15,6 +15,7 @@
                   return-object
                   item-text="name"
                   item-value="name"
+                  color="#00BCD4"
                   :label="$t('tashkilot_tanlang')"
                 ></v-autocomplete>
               </v-col>
@@ -33,6 +34,7 @@
                       :label="$t('berilgan_muhlat')"
                       prepend-icon="mdi-calendar"
                       readonly
+                      color="#00BCD4"
                       v-bind="attrs"
                       v-on="on"
                     ></v-text-field>
@@ -41,6 +43,7 @@
                     :min="current"
                     v-model="task.deadline"
                     @input="menu2 = false"
+                    color="#00BCD4"
                   ></v-date-picker>
                 </v-menu>
               </v-col>
@@ -50,7 +53,6 @@
                   :label="$t('sizning_matningiz')"
                   v-model="task.comment"
                   :hint="$t('topshiriqni_yozing')"
-                  #00BCD4
                 ></v-textarea>
               </v-col>
             </v-row>

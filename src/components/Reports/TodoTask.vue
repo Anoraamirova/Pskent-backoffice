@@ -12,7 +12,7 @@
                 <v-file-input
                   accept="image/*"
                   v-model="task.image"
-                  color="deep-purple accent-4"
+                  color="#00BCD4"
                   counter
                   dense
                   :label="$t('rasm')"
@@ -48,6 +48,7 @@
                   :label="$t('izoh_uchun_joy')"
                   v-model="task.comment"
                   outlined
+                  color="#00BCD4"
                   :hint="$t('bajarilgan_ish_haqida_malumot_bering')"
                 ></v-textarea>
               </v-col>

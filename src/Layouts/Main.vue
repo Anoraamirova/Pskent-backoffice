@@ -177,19 +177,19 @@
         <v-row justify="end">
           <v-col cols="auto">
             <v-list-item v-if="userInfo" two-line class="px-0">
-              <v-list-item-content
-                ><v-radio-group
-                  row
-                  v-model="lang"
-                  mandatory
-                  @change="setLocale(lang)"
-                  align-center
-                  justify-center
-                >
-                  <v-radio label="Uz" value="uz" color="#00BCD4"></v-radio>
-                  <v-radio label="Ru" value="ru" color="#00BCD4"> </v-radio>
-                </v-radio-group>
-              </v-list-item-content>
+              <v-radio-group
+                row
+                v-model="lang"
+                mandatory
+                @change="setLocale(lang)"
+                align-center
+                hide-details="true"
+                justify-center
+                pt-10
+              >
+                <v-radio label="Uz" value="uz" color="#00BCD4"></v-radio>
+                <v-radio label="Ru" value="ru" color="#00BCD4"> </v-radio>
+              </v-radio-group>
               <v-list-item-content class="px-0">
                 <v-list-item-title>{{ userInfo.name }}</v-list-item-title>
                 <v-list-item-subtitle>{{
@@ -266,7 +266,7 @@ export default {
       {
         icon: 'mdi-city-variant-outline',
         path: '/sozlamalar/tashkilotlar',
-        text: 'Xodimlar',
+        text: 'hodimlar',
         id: 3
       },
       {
@@ -370,6 +370,9 @@ export default {
 </script>
 
 <style scoped>
+.v-application--is-ltr .v-messages {
+  display: none !important;
+}
 #triangle-up {
   width: 0;
   height: 0;

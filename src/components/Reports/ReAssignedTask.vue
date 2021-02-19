@@ -14,7 +14,7 @@
                   :label="$t('izoh_uchun_joy')"
                   v-model="comment"
                   outlined
-                  #00BCD4
+                  color="#00BCD4"
                   :hint="$t('bajarilgan_ish_haqida_malumot_bering')"
                 ></v-textarea>
               </v-col>

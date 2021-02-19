@@ -133,7 +133,7 @@
           clear-icon="mdi-close-circle"
           color="#00BCD4"
           clearable
-          label="Xabar yozing"
+          :label="$t('Xabar_yozing')"
           type="text"
           @click:append="toggleMarker"
           @click:append-outer="

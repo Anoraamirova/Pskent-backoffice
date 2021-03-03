@@ -12,6 +12,7 @@
           :label="$t('Qidirish')"
           single-line
           hide-details
+          color="#00BCD4"
         ></v-text-field>
         <v-spacer></v-spacer>
       </v-row>

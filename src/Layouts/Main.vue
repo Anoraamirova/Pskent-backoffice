@@ -2,7 +2,7 @@
   <div>
     <v-app v-show="true" id="inspire">
       <v-navigation-drawer
-        color="light-#00BCD4 lighten-5"
+        color="light-#00BCD4"
         v-model="drawer"
         :clipped="$vuetify.breakpoint.lgAndUp"
         app
@@ -33,7 +33,7 @@
         temporary
         width="350"
         v-model="drawer2"
-        color="light-#00BCD4 lighten-5"
+        color="light-#00BCD4"
         app
         right
       >
@@ -147,7 +147,7 @@
         flat
         :clipped-left="$vuetify.breakpoint.lgAndUp"
         app
-        color="light-#00BCD4 lighten-5"
+        color="light-#00BCD4"
       >
         <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
         <v-toolbar-title color="#00BCD4" style="width:185px" class="ml-0 pl-4">

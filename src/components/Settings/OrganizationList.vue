@@ -145,7 +145,6 @@
                     <v-text-field
                       :label="$t('tashkilot_nomi')"
                       required
-                      color="#00BCD4"
                       v-model="formFields.tashkilotNomi"
                       prepend-icon="mdi-office-building"
                     ></v-text-field>
@@ -154,7 +153,6 @@
                     <v-text-field
                       :label="$t('tashkilot_nomi_ru')"
                       required
-                      color="#00BCD4"
                       v-model="formFields.tashkilotNomi_ru"
                       prepend-icon="mdi-office-building"
                     ></v-text-field>
@@ -171,6 +169,7 @@
                       :label="$t('tashkilot_manzili')"
                       prepend-icon="mdi-map-marker"
                       persistent-hint
+                      color="#00BCD4"
                       required
                     ></v-text-field>
                   </v-col>

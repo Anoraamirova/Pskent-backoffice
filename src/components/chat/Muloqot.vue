@@ -2,7 +2,7 @@
   <v-row>
     <v-col cols="4">
       <v-list style="overflow-y: scroll" height="90vh" two-line>
-        <v-list-item-group color="primary">
+        <v-list-item-group color="#00BCD4">
           <v-list-item
             v-for="(tashkilot, i) in tashkilotNomi"
             :key="i"

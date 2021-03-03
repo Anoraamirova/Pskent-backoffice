@@ -43,8 +43,8 @@
                               <v-list-item-content>
                                 <v-list-item-title class="body-2">{{
                                   infoWindow.data.citizen.name +
-                                  " " +
-                                  infoWindow.data.citizen.surname
+                                    " " +
+                                    infoWindow.data.citizen.surname
                                 }}</v-list-item-title>
                                 <v-list-item-subtitle class="body-caption">{{
                                   infoWindow.data.citizen.phone
@@ -97,6 +97,7 @@
                   v-model="selectedType"
                   item-text="title"
                   item-value="title"
+                  item-color="#00BCD4"
                   :label="$t('murojaat_holat_tanla')"
                   color="#00BCD4"
                   blue
@@ -333,12 +334,10 @@ export default {
         easing: this.easing
       })
       // console.log(this.selectedType)
-      Categories.getSortedRequests(this.selectedType.id, page, 10).then(
-        (res) => {
-          // console.log(res)
-          this.desserts = res.data
-        }
-      )
+      Categories.getSortedRequests(this.selectedType.id, page, 10).then(res => {
+        // console.log(res)
+        this.desserts = res.data
+      })
       console.log(page)
     }
   },
@@ -357,7 +356,7 @@ export default {
     copyAddress (lat, lng) {
       this.$copyText(
         `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
-      ).then((e) => {
+      ).then(e => {
         alert('Saqlandi')
       })
     },
@@ -400,7 +399,7 @@ export default {
         // organization solved
         Categories.getSortedRequests(5, 1, 10)
       ])
-        .then((res) => {
+        .then(res => {
           if (
             this.$store.state.user.roles[0].id === 3 ||
             this.$store.state.user.roles[0].id === 1
@@ -445,7 +444,7 @@ export default {
           this.$store.commit('setloading', false)
           // console.log(this.types)
         })
-        .catch((err) => {
+        .catch(err => {
           this.$store.commit('setloading', false)
           console.log(err)
         })
@@ -470,7 +469,7 @@ export default {
     // console.log('auth send:', this.$store.state.user.token)
     socket.on('authenticated', () => {
       console.log('connected...')
-      socket.on('newRequest', (data) => {
+      socket.on('newRequest', data => {
         console.log(data)
         this.soundEffect(data)
       })

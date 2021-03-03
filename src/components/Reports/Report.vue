@@ -146,10 +146,19 @@
                         </span>
                       </v-tooltip>
                     </v-list-item-title>
-                    <v-list-item-subtitle class="text--#00BCD4"
-                      ><strong>{{ $t("izoh") }}: </strong
-                      >{{ item.text }}</v-list-item-subtitle
-                    >
+                    <p v-if="item.typeId !== 4" class=" body-2">
+                      <strong>izoh: </strong
+                      >{{
+                        !item.watch
+                          ? item.text.substring(0, 120) + "..."
+                          : item.text
+                      }}
+                      <a
+                        v-if="item.text.length >= 120"
+                        @click="() => (item.watch = !item.watch)"
+                        >{{ item.watch ? $t("kamroq") : $t("koproq") }}</a
+                      >
+                    </p>
                     <v-tooltip bottom>
                       <template v-slot:activator="{ on, attrs }">
                         <v-list-item-subtitle class="mt-1"
@@ -432,16 +441,19 @@ export default {
     getIndividual () {
       Categories.getSingleRequest(this.id)
         .then(res => {
-          // console.log(res.data)
-          this.userInfo = res.data
-          this.userProfile.data = res.data
           this.chkp = true
+          this.userInfo = res.data
+          this.userInfo.comments = this.userInfo.comments.map(el => ({
+            ...el,
+            watch: false
+          }))
+          this.userProfile.data = res.data
           this.$store.commit('setloading', false)
         })
         .catch(err => {
+          console.log(err)
           this.chkp = true
           this.$store.commit('setloading', false)
-          console.log(err)
         })
     },
     changeLanguages (language) {

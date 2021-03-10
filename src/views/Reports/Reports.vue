@@ -1,7 +1,7 @@
-<template v-if="false">
+<template>
   <div>
     <v-container fluid>
-      <v-row v-if="false" align="center" class="mx-auto">
+      <v-row v-if="true" align="center" class="mx-auto">
         <v-col cols="4">
           <v-select
             v-model="selectedOrg"
@@ -81,20 +81,23 @@
             class="mx-2"
             @click="resetDefault"
             elevation="0"
-            color="#fff"
+            color="white"
             ><v-icon>mdi-filter-remove-outline</v-icon></v-btn
           >
           <v-btn
             small
             @click="getFilteredOrgs(1, 10)"
             elevation="0"
-            color="#00BCD4"
-            >{{ $t("Qidirish") }}<v-icon right white>mdi-filter</v-icon></v-btn
+            color="grey lighten-1"
+            text-color="white"
+            >{{ $t("Qidirish")
+            }}<v-icon right color="white">mdi-filter</v-icon></v-btn
           >
           <v-btn
             class="mx-4"
             small
             fab
+            white
             color="#00BCD4"
             :href="`${base}${getExcelUrl}`"
             target="_blank"
@@ -103,7 +106,7 @@
         </v-col>
       </v-row>
 
-      <v-row v-if="false" justify="end">
+      <v-row justify="end">
         <v-col cols="12">
           <v-data-table
             :options.sync="options"
@@ -119,7 +122,7 @@
           >
             <template v-slot:item.citizen="{ item }">
               {{ item.citizen.name + " " + item.citizen.surname }}
-              <p class="#00BCD4--text">
+              <p class="black--text">
                 <v-icon color="#00BCD4" size="16">mdi-home-city</v-icon>
                 {{ item.citizen.street + " " + item.citizen.home }}
               </p>

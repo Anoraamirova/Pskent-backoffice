@@ -244,12 +244,12 @@ export default {
           text: this.$t('korish'),
           align: 'start',
           value: 'id'
-        },
-        {
-          text: this.$t('Tanlansin'),
-          align: 'start',
-          value: 'tick'
         }
+        // {
+        //   text: this.$t('Tanlansin'),
+        //   align: 'start',
+        //   value: 'tick'
+        // }
       ],
       desserts: []
     }

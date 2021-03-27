@@ -1,6 +1,6 @@
 <template>
   <div class="mx-4">
-    <v-row justify="space-between">
+    <v-row>
       <v-col cols="auto">
         <!-- <v-btn text @click="$router.push('/sozlamalar/tashkilotlar')">{{
           $t("orqaga")
@@ -21,7 +21,25 @@
           </v-card-text>
         </v-card>
       </v-col>
-
+      <v-col cols="auto">
+        <v-card ripple to="/sozlamalar/mahalla">
+          <v-card-text>
+            <v-row justify="center" align="center">
+              <v-col class="py-0" cols="auto">
+                <v-avatar color="transparent">
+                  <v-icon size="30">mdi-tune-vertical</v-icon>
+                </v-avatar>
+              </v-col>
+              <v-col class="py-0" cols="auto">
+                <p class="py-0 my-0">{{ $t("mahalla") }}</p>
+                <span>{{ $t("umumiy") }}: {{ mahallas }}</span>
+              </v-col>
+            </v-row>
+          </v-card-text>
+        </v-card>
+      </v-col>
+    </v-row>
+    <v-row justify="center">
       <v-col cols="auto">
         <h1 class="display-1">{{ $t("tashkilotlar") }}</h1>
       </v-col>
@@ -236,6 +254,9 @@ import Categories from '../../services/Categories'
 export default {
   data () {
     return {
+      organizations: '',
+      categories: '',
+      mahallas: '',
       valid: true,
       regNum: '998[0-9]{0,}',
       isNew: false,
@@ -468,12 +489,25 @@ export default {
           console.log(err)
           alert(err.data.errors[0].msg)
         })
+    },
+    init () {
+      Organizations.getOrgLength()
+        .then(res => {
+          // console.log(res)
+          this.organizations = res.data.organizations
+          this.categories = res.data.categories
+          this.mahallas = res.data.mahallas
+        })
+        .catch(err => {
+          console.log(err)
+        })
     }
   },
   components: {
     CreateUserDialog
   },
   created () {
+    this.init()
     const language = localStorage.getItem('locale')
 
     if (language) {

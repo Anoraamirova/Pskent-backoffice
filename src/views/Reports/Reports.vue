@@ -216,6 +216,11 @@ export default {
           value: 'category.name_uz'
         },
         {
+          text: this.$t('mahalla'),
+          align: 'start',
+          value: 'mahalla.name_uz'
+        },
+        {
           text: this.$t('sana'),
           align: 'start',
           value: 'createdAt'
@@ -373,10 +378,12 @@ export default {
     if (language) {
       if (language === 'ru') {
         this.headers[1].value = 'category.name_ru'
+        this.headers[2].value = 'mahalla.name_ru'
         this.headers[3].value = 'organization.name_ru'
         this.headers[6].value = 'status.name_ru'
       } else if (language === 'uz') {
         this.headers[1].value = 'category.name_uz'
+        this.headers[2].value = 'mahalla.name_uz'
         this.headers[3].value = 'organization.name'
         this.headers[6].value = 'status.name_uz'
       }

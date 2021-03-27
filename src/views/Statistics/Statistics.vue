@@ -67,7 +67,7 @@
                             color="warning"
                             outlined
                             @click="
-                              copyAddress(
+                              openAddress(
                                 infoWindow.data.lat,
                                 infoWindow.data.lng
                               )
@@ -262,6 +262,11 @@ export default {
           value: 'category.name_uz'
         },
         {
+          text: this.$t('mahalla'),
+          align: 'start',
+          value: 'mahalla.name_uz'
+        },
+        {
           text: this.$t('korish'),
           align: 'start',
           value: 'categoryId',
@@ -353,11 +358,14 @@ export default {
     }
   },
   methods: {
-    copyAddress (lat, lng) {
+    openAddress (lat, lng) {
       this.$copyText(
         `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`
       ).then(e => {
-        alert('Saqlandi')
+        window.open(
+          `https://www.google.com/maps/search/?api=1&query=${lat}, ${lng}`,
+          '_blank'
+        )
       })
     },
     focusOnMap (val) {
@@ -460,8 +468,10 @@ export default {
     if (language) {
       if (language === 'ru') {
         this.headers[3].value = 'category.name_ru'
+        this.headers[4].value = 'mahalla.name_ru'
       } else if (language === 'uz') {
         this.headers[3].value = 'category.name_uz'
+        this.headers[4].value = 'mahalla.name_uz'
       }
     }
 

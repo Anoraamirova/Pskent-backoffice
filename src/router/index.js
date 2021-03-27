@@ -30,6 +30,15 @@ const routes = [
         }
       },
       {
+        path: '/sozlamalar/mahalla',
+        name: 'Mahalla',
+        component: () => import('../components/Settings/MahallaList.vue'),
+        meta: {
+          accessControl: true,
+          roles: roles.Reports.roles
+        }
+      },
+      {
         path: '/statistika/:id',
         props: true,
         name: 'reportss',

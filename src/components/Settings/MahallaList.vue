@@ -3,7 +3,10 @@
     <v-container class="mx-2" fluid>
       <v-row justify="start" class="mt-4 pb-0">
         <v-col cols="12" class="py-3">
-          <v-btn @click="$router.push('/sozlamalar')" text class="px-0"
+          <v-btn
+            @click="$router.push('/sozlamalar/tashkilotlar')"
+            text
+            class="px-0"
             ><v-icon left size="30">mdi-chevron-left</v-icon>
             {{ $t("orqaga") }}</v-btn
           >
@@ -19,6 +22,7 @@
             :label="$t('yangi_mahalla_qoshish(uz)')"
             :error="error.flag"
             :error-messages="error.msg"
+            :rules="[rules.latinName, rules.numbercheck]"
             color="#01838F"
           ></v-text-field>
         </v-col>
@@ -27,6 +31,7 @@
             v-model="mahalla.name_ru"
             :label="$t('yangi_mahalla_qoshish(ru)')"
             :error="error.flag"
+            :rules="[rules.cyrillicName, rules.numbercheck]"
             :error-messages="error.msg"
             color="#01838F"
           ></v-text-field>
@@ -59,7 +64,7 @@
           </v-tabs>
           <v-tabs-items v-model="tab">
             <v-tab-item :key="1">
-              <v-simple-table v-if ="desserts.length">
+              <v-simple-table v-if="desserts.length">
                 <template v-slot:default>
                   <thead>
                     <tr>
@@ -77,11 +82,7 @@
                       <td>{{ item.createdAt | moment("D.MM.YYYY") }}</td>
                       <td>{{ item.updatedAt | moment("D.MM.YYYY") }}</td>
                       <td>
-                        <v-btn
-                          @click="deleteMahalla(item)"
-                          fab
-                          small
-                          text
+                        <v-btn @click="deleteMahalla(item)" fab small text
                           ><v-icon color="#01838F"
                             >mdi-package-down</v-icon
                           ></v-btn
@@ -105,7 +106,7 @@
                       <th class="text-left">
                         {{ $t("tahrir_qilingan_vaqt") }}
                       </th>
-                      <th class="text-left">{{ $t("arxivlash") }}</th>
+                      <th class="text-left">{{ $t("arxivdan_chiqarildi") }}</th>
                     </tr>
                   </thead>
                   <tbody>
@@ -149,6 +150,8 @@ export default {
       langbool: null,
       tab: 0,
       page: 1,
+      regLatin: '^[a-zA-Z0-9\\s]+$',
+      regCyrillic: '^[?!,.а-яА-ЯёЁ0-9\\s]+$',
       error: {
         flag: false,
         msg: ''
@@ -159,6 +162,12 @@ export default {
         name_uz: '',
         name_ru: ''
         // name_en: `${Math.random() * 100} hello`
+      },
+      rules: {
+        latinName: v =>
+          v.match(this.regLatin) || 'Iltimos lotin alifbosida kiriting',
+        cyrillicName: c =>
+          c.match(this.regCyrillic) || 'Iltimos rus tilida kiriting'
       }
     }
   },
